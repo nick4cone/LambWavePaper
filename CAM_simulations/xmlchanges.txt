@@ -10,7 +10,7 @@ STOP_OPTION=ndays
 
 # Either use 58 or 93 for --nlev
 ./xmlchange --file env_build.xml --id CAM_CONFIG_OPTS --val \
-"--phys adiabatic --analytic_ic --nlev=57"
+"--phys adiabatic --analytic_ic --nlev=58"
 
 ./xmlchange JOB_WALLCLOCK_TIME=00:30:00
 

@@ -1,0 +1,17 @@
+./xmlchange DOUT_S=FALSE,\
+REST_OPTION=none,\
+STOP_OPTION=ndays
+
+# Four-day simulation
+./xmlchange STOP_N=4
+
+# To output every ten minutes:
+./xmlchange ATM_NCPL=144
+
+# Either use 58 or 93 for --nlev
+./xmlchange --file env_build.xml --id CAM_CONFIG_OPTS --val \
+"--phys adiabatic --analytic_ic --nlev=57"
+
+./xmlchange JOB_WALLCLOCK_TIME=00:30:00
+
+./case.setup

@@ -1,0 +1,29 @@
+ Users should add all user specific namelist changes below in the form of
+! namelist_var = new_namelist_value
+analytic_ic_type = 'dry_baroclinic_wave_jw2006'
+
+empty_htapes = .TRUE.
+avgflag_pertape = 'I'
+
+fincl1 = 'U', 'V', 'T', 'OMEGA', 'PS', 'PSL', 'Z3', 'PHIS', 'U850', 'V850', 'OMEGA850', 'T850', 'U500', 'V500', 'OMEGA500', 'T500'
+
+# Output at each timestep of 10 s = 577 outputs for four days, with the initial condition.
+write_nstep0 = .TRUE. ! Output the initial condition
+MFILT = 600
+NDENS = 2
+NHTFRQ = 1
+
+! Turn off the Coriolis force. Note that for FV3, we also need to
+! copy fv_arrays into src/dynamics/fv3/src_override and
+! set real(kind=r8_kind), public :: omega = cnst_omega*0.0d0
+omega = 0
+
+! Switch to sixth-order divergence damping, as this
+! is found to generally be more stable 
+fv3_nord = 2
+
+! Select the nc file based on using a 43 km (L58) or 86 km (L93) model top
+! L58:
+NCDATA = '/glade/u/home/cjablono/CESM_vertical_grids/cam_vcoords_L58_dz500m_low_top_43km.nc'
+! L93:
+!NCDATA = '/glade/u/home/cjablono/CESM_vertical_grids/cam_vcoords_L93_dz500m_mid_top_86km.nc'

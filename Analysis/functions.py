@@ -1,13 +1,15 @@
 import numpy as np
 
-def find_lamb_wave(field, lat_val, lon_vals, extreme_type, tol):
-    # Identify the point of the Lamb wave on a Hovmuller diagram!
+def find_lamb_wave(field, lat_idx, lon_vals, extreme_type, tol):
+    # Identify the slope the Lamb wave on a Hovmuller diagram!
+    # This determines the speed (given some factors)
     # This is for a certain lon value
     # Define a tolerance above which we assume we have 
 
     # Inputs:
     # field: field that is being investigated. Assume this is of the form (time, lat, lon)
-    # lon: Indices of longitude value(s) to examine
+    # lat_idx: Index of the latitude to examine, i.e. at lat = lats[lat_idx]
+    # lon_vals: Indices of longitude value(s) to examine
     # extreme_type: max or min
     # tol: A positive value above/below which to stop the values looked at.
 
@@ -54,6 +56,7 @@ def find_lamb_wave(field, lat_val, lon_vals, extreme_type, tol):
     slope, _ = np.polyfit(lamb_times_s, dist_m, 1)
 
     return lamb_times, slope
+
         
 
     

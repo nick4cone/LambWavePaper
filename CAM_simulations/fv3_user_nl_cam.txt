@@ -2,6 +2,7 @@
 ! namelist_var = new_namelist_value
 analytic_ic_type = 'dry_baroclinic_wave_jw2006'
 
+write_nstep0 = .TRUE. ! Output the initial condition
 empty_htapes = .TRUE.
 avgflag_pertape = 'I'
 

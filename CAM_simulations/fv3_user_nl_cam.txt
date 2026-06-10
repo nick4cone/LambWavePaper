@@ -23,6 +23,11 @@ omega = 0
 ! is found to generally be more stable 
 fv3_nord = 2
 
+! Turn off the inbuilt RF and sponge layers
+fv3_tau = 0.0
+fv3_d2_bg_k1 = 0.0
+fv3_d2_bg_k2 = 0.0
+
 ! Select the nc file based on using a 43 km (L58) or 86 km (L93) model top
 ! L58:
 NCDATA = '/glade/u/home/cjablono/CESM_vertical_grids/cam_vcoords_L58_dz500m_low_top_43km.nc'

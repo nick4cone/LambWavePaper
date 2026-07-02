@@ -1,0 +1,26 @@
+! Output every 1 min for more accurate speed estimations
+
+./xmlchange DOUT_S=FALSE,\
+REST_OPTION=none,\
+STOP_OPTION=nsteps
+
+! 18 hours is enough for the Lamb wave to reach the antipode
+./xmlchange STOP_N=1080
+
+! To output every ten minutes:
+./xmlchange ATM_NCPL=1440
+
+! Set --nlev depending on model height
+! ztop = 12.5 km -> --nlev=25
+! ztop = 25 km -> --nlev=50
+! ztop = 50 km -> --nlev=100
+! ztop = 100 km -> --nlev=200
+./xmlchange --file env_build.xml --id CAM_CONFIG_OPTS --val \
+"--phys adiabatic --analytic_ic --nlev=50"
+
+./xmlchange JOB_WALLCLOCK_TIME=00:30:00
+
+./case.setup
+
+! Copy across the initial condition file.
+! Add file location here ... 

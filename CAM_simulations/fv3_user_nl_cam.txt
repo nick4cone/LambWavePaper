@@ -2,14 +2,15 @@
 ! namelist_var = new_namelist_value
 analytic_ic_type = 'dry_baroclinic_wave_jw2006'
 
+write_nstep0 = .TRUE. ! Output the initial condition
 empty_htapes = .TRUE.
 avgflag_pertape = 'I'
 
 fincl1 = 'U', 'V', 'T', 'OMEGA', 'PS', 'PSL', 'Z3', 'PHIS', 'U850', 'V850', 'OMEGA850', 'T850', 'U500', 'V500', 'OMEGA500', 'T500'
 
-# Output at each timestep of 10 s = 577 outputs for four days, with the initial condition.
+# Output at each timestep, which is either 1 or 10 mins.
 write_nstep0 = .TRUE. ! Output the initial condition
-MFILT = 600
+MFILT = 1200
 NDENS = 2
 NHTFRQ = 1
 
@@ -22,8 +23,22 @@ omega = 0
 ! is found to generally be more stable 
 fv3_nord = 2
 
-! Select the nc file based on using a 43 km (L58) or 86 km (L93) model top
-! L58:
-NCDATA = '/glade/u/home/cjablono/CESM_vertical_grids/cam_vcoords_L58_dz500m_low_top_43km.nc'
-! L93:
-!NCDATA = '/glade/u/home/cjablono/CESM_vertical_grids/cam_vcoords_L93_dz500m_mid_top_86km.nc'
+! Turn off the inbuilt RF and sponge layers
+fv3_tau = 0.0
+fv3_d2_bg_k1 = 0.0
+fv3_d2_bg_k2 = 0.0
+
+! For the 1 minute simulations, turn off subcycling -> set splits to 1.
+! Leave these commented out for 10 min -> keep the defaults.
+!fv3_n_split = 1
+!fv3_k_split = 1
+
+! Select the equispaced (dz=500 m) vertical grid
+! 12.5 km model top = L25
+!NCDATA = '/glade/work/nandrosk/grids/lamb_wave/hybrid_p_L25_ztop12.5km_dz500m.nc'
+! 25 km model top = L50
+!NCDATA = '/glade/work/nandrosk/grids/lamb_wave/hybrid_p_L50_ztop25km_dz500m.nc'
+! 50 km model top = L100
+NCDATA = '/glade/work/nandrosk/grids/lamb_wave/hybrid_p_L100_ztop50km_dz500m.nc'
+! 100 km model top = L200
+NCDATA = '/glade/work/nandrosk/grids/lamb_wave/hybrid_p_L200_ztop100km_dz500m.nc'

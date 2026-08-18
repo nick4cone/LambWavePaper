@@ -1,0 +1,20 @@
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+write_nstep0     = .TRUE.
+empty_htapes     = .TRUE.
+avgflag_pertape  = 'I'
+MFILT = 1082
+se_tstep = 60
+se_dt_remap_factor = 1
+se_dt_tracer_factor = 2
+se_hypervis_subcycle = 1
+se_hypervis_subcycle_q = 1
+se_hypervis_subcycle_tom = 1
+NHTFRQ = 1
+fincl1 = 'PS','U850','OMEGA850'
+omega = 0.
+analytic_ic_type = 'dry_baroclinic_wave_jw2006'
+ncdata = '/glade/work/nandrosk/grids/lamb_wave/hybrid_p_L100_ztop50km_dz500m.nc'
+interpolate_output = .TRUE.
+interpolate_nlon = 360
+interpolate_nlat = 181

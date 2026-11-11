@@ -1,4 +1,5 @@
-! Output every 1 min for more accurate speed estimations
+! xml changes for the runs with 1 minute
+! output for more accurate phase speed estimation
 
 ./xmlchange DOUT_S=FALSE,\
 REST_OPTION=none,\

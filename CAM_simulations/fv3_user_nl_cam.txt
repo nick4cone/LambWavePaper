@@ -2,11 +2,11 @@
 ! namelist_var = new_namelist_value
 analytic_ic_type = 'dry_baroclinic_wave_jw2006'
 
-write_nstep0 = .TRUE. ! Output the initial condition
 empty_htapes = .TRUE.
 avgflag_pertape = 'I'
 
-fincl1 = 'U', 'V', 'T', 'OMEGA', 'PS', 'PSL', 'Z3', 'PHIS', 'U850', 'V850', 'OMEGA850', 'T850', 'U500', 'V500', 'OMEGA500', 'T500'
+! Add the 'U' field when wanting to compute vertical slopes, e.g. Fig 5
+fincl1 = 'U850', 'OMEGA850', 'PS'
 
 # Output at each timestep, which is either 1 or 10 mins.
 write_nstep0 = .TRUE. ! Output the initial condition
@@ -28,10 +28,9 @@ fv3_tau = 0.0
 fv3_d2_bg_k1 = 0.0
 fv3_d2_bg_k2 = 0.0
 
-! For the 1 minute simulations, turn off subcycling -> set splits to 1.
-! Leave these commented out for 10 min -> keep the defaults.
-!fv3_n_split = 1
-!fv3_k_split = 1
+! Turning off subcycling leads to dt_dyn=dt_dyn=1 minute
+fv3_n_split = 1
+fv3_k_split = 1
 
 ! Select the equispaced (dz=500 m) vertical grid
 ! 12.5 km model top = L25

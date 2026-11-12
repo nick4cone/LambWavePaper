@@ -1,0 +1,141 @@
+&air_composition_nl
+ dry_air_species                = ''
+ water_species_in_air           = 'Q'
+/
+&analytic_ic_nl
+ analytic_ic_type               = 'dry_baroclinic_wave_jw2006'
+/
+&assimilation
+ mpas_jedi_da           =  .false. 
+/
+&cam_history_nl
+ avgflag_pertape                = 'I','I'
+ empty_htapes           = .TRUE.
+ fincl1         = 'PS'
+ fincl2         = 'U','OMEGA','w_mpas'
+ mfilt          = 1081,25
+ ndens          = 2,2
+ nhtfrq         = 1,60
+ write_nstep0           = .TRUE.
+/
+&cam_initfiles_nl
+ ncdata         = '/glade/work/nandrosk/grids/lamb_wave/mpasa120_L100_ztop50km_dz500m_no_topo_no_rot.init.nc'
+ scale_dry_air_mass             =       0.0D0 
+ use_topo_file          = .false.
+/
+&damping
+ mpas_cam_coef          =  0.0D0 
+ mpas_cam_damping_levels                =  0     
+ mpas_number_rayleigh_damp_u_levels             =  5 
+ mpas_rayleigh_damp_u           = .false.
+ mpas_rayleigh_damp_u_timescale_days            =  5.0 
+ mpas_xnutr             =  0.2D0 
+ mpas_zd                = 110000.0D0
+/
+&decomposition
+ mpas_block_decomp_file_prefix          = '/glade/campaign/cesm/cesmdata/inputdata/atm/cam/inic/mpas/mpasa120.graph.info.part.'
+/
+&dust_nl
+ dust_emis_fact         = 0.37D0
+/
+&limited_area
+ mpas_apply_lbcs                =  .false. 
+/
+&microp_aero_nl
+ microp_aero_bulk_scale         =   2.D0    
+ microp_aero_npccn_scale                =   1.D0    
+ microp_aero_wsub_min           =   0.2D0    
+ microp_aero_wsub_min_asf               =   0.1D0    
+ microp_aero_wsub_scale         =   1.D0     
+ microp_aero_wsubi_min          =   0.001D0    
+ microp_aero_wsubi_scale                =   1.D0    
+/
+&nhyd_model
+ mpas_apvm_upwinding            =  0.5D0 
+ mpas_coef_3rd_order            =  1.0D0 
+ mpas_del4u_div_factor          =  10.0D0 
+ mpas_dt                = 60.
+ mpas_dynamics_split_steps              = 1
+ mpas_epssm             =  0.1D0 
+ mpas_h_mom_eddy_visc2          =  0.0D0 
+ mpas_h_mom_eddy_visc4          =  0.0D0 
+ mpas_h_scalewithmesh           =  .true. 
+ mpas_h_theta_eddy_visc2                =  0.0D0 
+ mpas_h_theta_eddy_visc4                =  0.0D0 
+ mpas_horiz_mixing              = '2d_smagorinsky'
+ mpas_len_disp          = 120000.0D0
+ mpas_mix_full          =  .true. 
+ mpas_monotonic         =  .true. 
+ mpas_number_of_sub_steps               = 1
+ mpas_positive_definite         =  .false. 
+ mpas_scalar_adv_order          =  3 
+ mpas_scalar_advection          =  .true. 
+ mpas_scalar_vadv_order         =  3 
+ mpas_smagorinsky_coef          =  0.125D0 
+ mpas_smdiv             =  0.1D0 
+ mpas_split_dynamics_transport          = .true.
+ mpas_theta_adv_order           =  3 
+ mpas_theta_vadv_order          =  3 
+ mpas_time_integration          = 'SRK3'
+ mpas_time_integration_order            =  2 
+ mpas_u_vadv_order              =  3 
+ mpas_v_mom_eddy_visc2          =  0.0D0 
+ mpas_v_theta_eddy_visc2                =  0.0D0 
+ mpas_visc4_2dsmag              =  0.05D0 
+ mpas_w_adv_order               =  3 
+ mpas_w_vadv_order              =  3 
+/
+&phys_ctl_nl
+ cam_chempkg            = 'none'
+ cam_physpkg            = 'adiabatic'
+ cam_snapshot_after_num         =    -1 
+ cam_snapshot_before_num                =   -1 
+ deep_scheme            = 'NONE'
+ do_clubb_sgs           =  .false. 
+ eddy_scheme            = 'NONE'
+ history_aero_optics            =           .false.  
+ history_aerosol                =               .false.  
+ history_amwg           =                  .true.   
+ history_budget         =                .false.  
+ history_chemistry              =             .true.   
+ history_chemspecies_srf                =       .true.   
+ history_clubb          =                 .true.   
+ history_dust           =                  .false.  
+ history_eddy           =                  .false.  
+ history_vdiag          =                 .false.  
+ history_waccm          =                 .false.  
+ history_waccmx         =                .false.  
+ macrop_scheme          = 'none'
+ microp_scheme          = 'NONE'
+ radiation_scheme               = 'none'
+ shallow_scheme         = 'NONE'
+ srf_flux_avg           = 0
+ use_gw_convect_dp              = .false.
+ use_gw_front           = .false.
+ use_hemco              = .false.
+ use_simple_phys                = .true.
+ use_subcol_microp              = .false.
+ waccmx_opt             = 'off'
+/
+&physconst_nl
+ omega          = 0.
+/
+&printout
+ mpas_print_detailed_minmax_vel         =  .false. 
+ mpas_print_global_minmax_sca           =  .false. 
+ mpas_print_global_minmax_vel           =  .false. 
+/
+&qneg_nl
+ print_qneg_warn                = 'summary'
+/
+&radheat_nl
+ p_bot_for_radmrg               =                      1.D0 
+ p_top_for_radmrg               =                      0.D0 
+ qrsmlt_scaling         =                      1.D0 
+/
+&restart
+ mpas_do_restart                =  .false. 
+/
+&zmconv_nl
+ zmconv_parcel_pbl              = .false.
+/
